@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пёсель на Псковской — груминг в Твери</title>
+<meta name="description" content="Груминг-салон для собак, кошек, кроликов и морских свинок в Твери. Псковская, 7. Запись с 10:00. Рейтинг 4,7 в 2ГИС.">
+<meta name="theme-color" content="#0c0b0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0b0a; --ink-2:#151311; --ink-3:#1f1c19;
+  --bone:#f4efe7; --bone-2:#e8dfd1; --bone-3:#d8ccb9;
+  --accent:#ff6a3d; --accent-2:#ff8f5e; --gold:#e8c08a;
+  --muted:rgba(244,239,231,.62); --muted-ink:rgba(12,11,10,.6);
+  --line:rgba(244,239,231,.12); --line-ink:rgba(12,11,10,.12);
+  --r:28px; --gutter:clamp(16px,4vw,56px);
+  --display:'Unbounded',system-ui,sans-serif; --body:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ink);color:var(--bone);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img,svg,canvas{display:block}
+::selection{background:var(--accent);color:var(--ink)}
+.wrap{padding-inline:var(--gutter);max-width:1600px;margin-inline:auto}
+.eyebrow{font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,106,61,.18)}
+.yo{color:var(--accent)}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.95;letter-spacing:-.035em}
+.h2{font-size:clamp(40px,7.4vw,124px)}
+.lead{font-size:clamp(17px,1.4vw,21px);color:var(--muted);max-width:52ch}
+
+/* ---------- preloader ---------- */
+.loader{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;clip-path:inset(0 0 0 0)}
+.loader__word{font-family:var(--display);font-weight:900;font-size:clamp(56px,14vw,220px);letter-spacing:-.05em;overflow:hidden;line-height:1;padding-top:.22em}
+.loader__word span{display:inline-block;transform:translateY(110%)}
+.loader__count{position:absolute;right:var(--gutter);bottom:var(--gutter);font-family:var(--display);font-size:clamp(28px,4vw,56px);font-weight:300;color:var(--muted)}
+.loader__bar{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent)}
+.no-js .loader{display:none}
+
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:16px var(--gutter) auto;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 22px;border-radius:999px;background:rgba(18,16,14,.55);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid var(--line);transition:transform .6s var(--ease)}
+.nav.is-hidden{transform:translateY(-140%)}
+.logo{font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:-.04em;display:flex;align-items:baseline;gap:8px}
+.logo small{font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:0;color:var(--muted)}
+.nav__links{display:flex;gap:4px}
+.nav__links a{padding:10px 16px;border-radius:999px;font-weight:600;font-size:15px;color:var(--muted);transition:color .3s,background .3s}
+.nav__links a:hover{color:var(--bone);background:rgba(244,239,231,.07)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:999px;font-weight:800;font-size:16px;line-height:1;white-space:nowrap;position:relative;overflow:hidden;isolation:isolate;transition:color .4s var(--ease)}
+.btn--accent{background:var(--accent);color:var(--ink)}
+.btn--accent::after{content:"";position:absolute;inset:0;background:var(--bone);transform:translateY(101%);border-radius:inherit;transition:transform .5s var(--ease);z-index:-1}
+.btn--accent:hover::after{transform:translateY(0)}
+.btn--ghost{border:1px solid rgba(244,239,231,.3)}
+.btn--ghost:hover{border-color:var(--bone)}
+.btn--ink{background:var(--ink);color:var(--bone)}
+.btn--ink::after{content:"";position:absolute;inset:0;background:var(--accent);transform:translateY(101%);border-radius:inherit;transition:transform .5s var(--ease);z-index:-1}
+.btn--ink:hover{color:var(--ink)}.btn--ink:hover::after{transform:none}
+.btn svg{width:18px;height:18px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(4px) rotate(-45deg)}
+.nav .btn{padding:13px 22px;font-size:15px}
+@media (max-width:900px){.nav__links{display:none}.logo small{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:
+  radial-gradient(60% 70% at 78% 30%,rgba(255,106,61,.38),transparent 60%),
+  radial-gradient(50% 60% at 30% 10%,rgba(232,192,138,.22),transparent 65%),
+  #140f0b}
+.hero__shade{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(120% 80% at 15% 100%,rgba(12,11,10,.95) 10%,rgba(12,11,10,.35) 55%,transparent 75%),
+  linear-gradient(180deg,rgba(12,11,10,.55) 0%,transparent 25%,transparent 60%,rgba(12,11,10,.9) 100%)}
+.hero__content{position:absolute;inset:auto 0 0 0;padding-bottom:clamp(28px,6vh,72px);pointer-events:none}
+.hero__content a,.hero__content button{pointer-events:auto}
+.hero h1{font-size:clamp(52px,11.2vw,200px);line-height:.86;letter-spacing:-.055em;margin:18px 0 28px}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .line>span{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--gold);font-weight:300}
+.hero__row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero__badge{position:absolute;right:var(--gutter);top:110px;display:flex;align-items:center;gap:14px;padding:14px 20px 14px 14px;border-radius:20px;background:rgba(18,16,14,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line)}
+.hero__badge b{font-family:var(--display);font-size:34px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.hero__badge .stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.hero__badge small{display:block;color:var(--muted);font-size:13px}
+.hero__badge .g{width:46px;height:46px;border-radius:12px;background:#2db84b;display:grid;place-items:center;font-family:var(--display);font-weight:900;color:#fff;font-size:15px}
+@keyframes bob{50%{transform:translateY(6px)}}
+@media (max-width:700px){
+  .hero__shade{background:linear-gradient(180deg,rgba(12,11,10,.5) 0%,rgba(12,11,10,.2) 25%,rgba(12,11,10,.75) 55%,rgba(12,11,10,.95) 100%)}
+  .nav{padding:8px 8px 8px 18px}.nav .btn{padding:11px 16px;font-size:14px}
+  .fab{display:none!important}
+}
+@media (max-width:700px){.hero__badge{top:96px;right:auto;left:var(--gutter);padding:10px 14px 10px 10px}.hero__badge b{font-size:26px}.hero__badge .g{width:38px;height:38px;font-size:13px}}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--accent);color:var(--ink);overflow:hidden;padding:22px 0;transform:rotate(-1.6deg) scale(1.04);position:relative;z-index:3;margin-top:-26px}
+.marquee__track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee__track span{font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,40px);letter-spacing:-.03em;padding:0 22px;display:flex;align-items:center;gap:44px;white-space:nowrap}
+.marquee__track span::after{content:"✦";font-size:.7em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- manifesto ---------- */
+.manifesto{background:var(--bone);color:var(--ink);padding:clamp(120px,18vw,240px) 0 clamp(100px,14vw,200px);margin-top:-30px}
+.manifesto .eyebrow{color:var(--muted-ink)}
+.manifesto p.big{font-family:var(--display);font-weight:600;font-size:clamp(24px,4.6vw,76px);overflow-wrap:anywhere;hyphens:auto;line-height:1.08;letter-spacing:-.035em;margin-top:36px;max-width:22ch}
+.manifesto p.big .w{opacity:.14;transition:none}
+.manifesto p.big .hl{color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(70px,10vw,140px);border-top:1px solid var(--line-ink)}
+.fact{padding:28px 24px 0 0}
+.fact b{font-family:var(--display);font-weight:800;font-size:clamp(44px,5.6vw,92px);letter-spacing:-.05em;line-height:1;display:block}
+.fact span{color:var(--muted-ink);font-weight:600;display:block;margin-top:10px;max-width:22ch}
+@media (max-width:800px){.facts{grid-template-columns:1fr 1fr;row-gap:36px}}
+
+/* ---------- services ---------- */
+.services{padding:clamp(100px,14vw,200px) 0}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:28px;margin-bottom:clamp(40px,6vw,80px)}
+.sec-head .h2{margin-top:22px}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{--mx:50%;--my:50%;position:relative;border-radius:var(--r);background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,2.6vw,40px);overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(500px circle at var(--mx) var(--my),rgba(255,106,61,.16),transparent 45%);opacity:0;transition:opacity .4s;z-index:-1}
+.card:hover::before{opacity:1}
+.card h3{font-size:clamp(26px,2.6vw,42px);letter-spacing:-.04em;line-height:1}
+.card p{color:var(--muted);margin-top:14px;max-width:36ch}
+.card .price{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.8vw,28px);letter-spacing:-.03em;margin-top:28px;display:flex;align-items:baseline;gap:10px}
+.card .price small{font-family:var(--body);font-size:14px;color:var(--muted);font-weight:600;letter-spacing:0}
+.card .ico{width:58px;height:58px;border-radius:18px;background:rgba(244,239,231,.06);border:1px solid var(--line);display:grid;place-items:center;margin-bottom:34px}
+.card .ico svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.c-a{grid-column:span 7;min-height:460px;background:linear-gradient(160deg,#2a1a10 0%,var(--ink-2) 60%)}
+.c-a h3{font-size:clamp(36px,4.4vw,72px)}
+.c-b{grid-column:span 5}
+.c-c{grid-column:span 4}.c-d{grid-column:span 4}.c-e{grid-column:span 4}
+.c-f{grid-column:span 12;min-height:auto;flex-direction:row;align-items:center;gap:28px;background:var(--gold);color:var(--ink);border:0}
+.c-f p{color:rgba(12,11,10,.68)}
+.c-f .ico{background:rgba(12,11,10,.08);border-color:rgba(12,11,10,.12);margin:0;flex:none}
+.c-f .ico svg{stroke:var(--ink)}
+.c-f .price small{color:rgba(12,11,10,.6)}
+.big-num{position:absolute;right:-10px;bottom:-60px;font-family:var(--display);font-weight:900;font-size:clamp(200px,24vw,380px);line-height:1;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:1px rgba(232,192,138,.22);z-index:-1;pointer-events:none}
+@media (max-width:960px){.c-a,.c-b{grid-column:span 12}.c-c,.c-d,.c-e{grid-column:span 12}.c-f{flex-direction:column;align-items:flex-start}.card{min-height:240px}.c-a{min-height:380px}}
+
+/* ---------- ritual (horizontal) ---------- */
+.ritual{position:relative;background:var(--ink-2);overflow:hidden}
+.ritual__inner{height:100svh;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,5vh,60px);padding:100px 0 50px}
+.ritual__track{display:flex;gap:20px;padding-inline:var(--gutter);width:max-content;will-change:transform}
+.step{width:clamp(300px,34vw,520px);height:clamp(380px,56vh,560px);border-radius:var(--r);background:var(--ink-3);border:1px solid var(--line);padding:clamp(24px,2.6vw,40px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;flex:none}
+.step__n{font-family:var(--display);font-weight:900;font-size:clamp(90px,10vw,160px);letter-spacing:-.07em;line-height:.8;color:transparent;-webkit-text-stroke:1.2px rgba(244,239,231,.25)}
+.step h3{font-size:clamp(30px,3vw,48px);letter-spacing:-.04em}
+.step p{color:var(--muted);margin-top:12px;max-width:30ch}
+.step svg.art{position:absolute;right:28px;top:28px;width:clamp(70px,7vw,110px);height:auto;stroke:var(--accent);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.step--intro{background:transparent;border:0;padding-left:0;justify-content:center;width:clamp(320px,40vw,620px)}
+.step--intro .h2{font-size:clamp(44px,6.6vw,110px)}
+.step--last{background:var(--accent);color:var(--ink);border:0}
+.step--last p{color:rgba(12,11,10,.7)}
+.step--last .step__n{-webkit-text-stroke-color:rgba(12,11,10,.35)}
+.step--last svg.art{stroke:var(--ink)}
+.ritual__progress{margin-inline:var(--gutter);height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.ritual__progress i{display:block;height:100%;width:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:767px){
+  .ritual__inner{height:auto;padding:100px 0}
+  .ritual__track{flex-direction:column;width:auto}
+  .step,.step--intro{width:100%;height:auto;min-height:300px}
+  .step--intro{min-height:auto}
+  .ritual__progress{display:none}
+}
+
+/* ---------- pricing ---------- */
+.pricing{background:var(--bone);color:var(--ink);padding:clamp(100px,14vw,200px) 0}
+.pricing .eyebrow{color:var(--muted-ink)}
+.pricing .lead{color:var(--muted-ink)}
+.calc{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:start}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{padding:12px 20px;border-radius:999px;border:1px solid var(--line-ink);font-weight:700;font-size:15px;transition:background .3s,color .3s,border-color .3s}
+.tab:hover{border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.search{position:relative;margin-bottom:14px}
+.search input{width:100%;padding:18px 20px 18px 52px;border-radius:18px;border:1px solid var(--line-ink);background:#fff;font:inherit;font-weight:600;color:var(--ink);outline:none;transition:border-color .3s,box-shadow .3s}
+.search input:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgba(255,106,61,.2)}
+.search svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;stroke:var(--muted-ink);fill:none;stroke-width:2}
+.list{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left;padding:18px 20px;border-radius:18px;background:#fff;border:1px solid transparent;font-weight:700;transition:border-color .25s,transform .25s var(--ease),background .25s}
+.opt:hover{border-color:var(--line-ink);transform:translateY(-2px)}
+.opt span:last-child{font-family:var(--display);font-weight:600;font-size:15px;white-space:nowrap;color:var(--muted-ink)}
+.opt[aria-pressed="true"]{background:var(--ink);color:var(--bone)}
+.opt[aria-pressed="true"] span:last-child{color:var(--accent)}
+.empty{grid-column:1/-1;padding:30px;text-align:center;color:var(--muted-ink);font-weight:600}
+.addons{margin-top:26px}
+.addons h4{font-family:var(--display);font-size:20px;letter-spacing:-.03em;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:11px 16px;border-radius:999px;background:#fff;border:1px solid var(--line-ink);font-weight:700;font-size:14px;transition:all .25s}
+.chip em{font-style:normal;color:var(--muted-ink);font-weight:600}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+.chip[aria-pressed="true"] em{color:var(--ink)}
+.receipt{position:sticky;top:100px;background:var(--ink);color:var(--bone);border-radius:var(--r);padding:30px;overflow:hidden}
+.receipt::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:14px;background:radial-gradient(circle at 10px -2px,transparent 10px,var(--bone) 11px) 0 0/20px 14px repeat-x;opacity:0}
+.receipt .eyebrow{color:var(--muted)}
+.receipt__pet{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.04em;line-height:1.05;margin:18px 0 6px;min-height:1.05em}
+.receipt__cat{color:var(--muted);font-weight:600;font-size:14px}
+.receipt__rows{margin:22px 0;border-top:1px dashed var(--line);padding-top:16px;display:grid;gap:10px;min-height:40px}
+.receipt__rows div{display:flex;justify-content:space-between;gap:14px;font-weight:600;font-size:15px}
+.receipt__rows div span:last-child{color:var(--muted);white-space:nowrap}
+.receipt__total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:18px}
+.receipt__total span{color:var(--muted);font-weight:700}
+.receipt__total b{font-family:var(--display);font-weight:800;font-size:46px;letter-spacing:-.05em}
+.receipt__note{color:var(--muted);font-size:13px;margin:12px 0 22px}
+.receipt .btn{width:100%;justify-content:center}
+.receipt .btn+.btn{margin-top:10px}
+@media (max-width:1000px){.calc{grid-template-columns:1fr}.receipt{position:relative;top:0}}
+@media (max-width:560px){.list{grid-template-columns:1fr}}
+
+/* ---------- masters ---------- */
+.masters{padding:clamp(100px,14vw,200px) 0}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.master{border-radius:var(--r);background:var(--ink-2);border:1px solid var(--line);overflow:hidden;transition:transform .6s var(--ease)}
+.master:hover{transform:translateY(-8px)}
+.master__pic{aspect-ratio:4/5;position:relative;display:grid;place-items:center;overflow:hidden}
+.master__pic b{font-family:var(--display);font-weight:900;font-size:clamp(120px,14vw,220px);letter-spacing:-.08em;color:rgba(12,11,10,.85);line-height:1;transition:transform .8s var(--ease)}
+.master:hover .master__pic b{transform:scale(1.08) rotate(-4deg)}
+.master__pic::after{content:"Фото мастера";position:absolute;left:16px;bottom:14px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(12,11,10,.5)}
+.m1 .master__pic{background:linear-gradient(140deg,#ffb48f,#ff6a3d)}
+.m2 .master__pic{background:linear-gradient(140deg,#f6e2bf,#e8c08a)}
+.m3 .master__pic{background:linear-gradient(140deg,#e9e1d4,#bfb3a0)}
+.m4 .master__pic{background:linear-gradient(140deg,#ffd7a8,#f3a35c)}
+.master__body{padding:24px}
+.master__body h3{font-size:26px;letter-spacing:-.04em}
+.master__body p{color:var(--muted);font-size:15px;margin-top:10px}
+@media (max-width:1000px){.mgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.mgrid{grid-template-columns:1fr}}
+
+/* ---------- reviews ---------- */
+.reviews{padding:clamp(80px,10vw,140px) 0;background:var(--ink-2);overflow:hidden}
+.rrow{display:flex;gap:16px;width:max-content;margin-top:16px;animation:mq 70s linear infinite}
+.rrow.rev{animation-direction:reverse;animation-duration:80s}
+.reviews:hover .rrow{animation-play-state:paused}
+.review{width:min(420px,82vw);flex:none;border-radius:var(--r);background:var(--ink-3);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:22px}
+.review q{font-size:18px;font-weight:600;line-height:1.45;quotes:"«" "»"}
+.review footer{display:flex;align-items:center;gap:12px;color:var(--muted);font-weight:600;font-size:14px}
+.review footer i{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--ink);display:grid;place-items:center;font-style:normal;font-weight:800;font-family:var(--display);font-size:14px}
+.review .st{color:var(--gold);letter-spacing:2px;font-size:13px}
+
+/* ---------- faq ---------- */
+.faq{background:var(--bone);color:var(--ink);padding:clamp(100px,14vw,200px) 0}
+.faq .eyebrow{color:var(--muted-ink)}
+.faq__grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,6vw,100px)}
+.qa{border-top:1px solid var(--line-ink)}
+.qa:last-child{border-bottom:1px solid var(--line-ink)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:28px 0;text-align:left;font-family:var(--display);font-weight:600;font-size:clamp(19px,1.8vw,26px);letter-spacing:-.03em}
+.qa button i{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-ink);position:relative;transition:background .3s,transform .5s var(--ease)}
+.qa button i::before,.qa button i::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;background:currentColor;transform:translate(-50%,-50%)}
+.qa button i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa.open button i{background:var(--accent);border-color:var(--accent);transform:rotate(45deg)}
+.qa__a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.qa.open .qa__a{grid-template-rows:1fr}
+.qa__a>div{overflow:hidden}
+.qa__a p{color:var(--muted-ink);padding-bottom:28px;max-width:60ch;font-size:17px}
+@media (max-width:900px){.faq__grid{grid-template-columns:1fr}}
+
+/* ---------- contact ---------- */
+.contact{padding:clamp(100px,14vw,200px) 0 0;position:relative;overflow:hidden}
+.contact h2{font-size:clamp(56px,12vw,220px);letter-spacing:-.06em;line-height:.85}
+.contact h2 a{display:inline-block;transition:color .4s}
+.contact h2 a:hover{color:var(--accent)}
+.cgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:16px;margin-top:clamp(50px,7vw,100px)}
+.cbox{border-radius:var(--r);background:var(--ink-2);border:1px solid var(--line);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:28px}
+.cbox dl{display:grid;gap:22px}
+.cbox dt{color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.cbox dd{font-family:var(--display);font-weight:600;font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;margin-top:6px}
+.cbox dd a:hover{color:var(--accent)}
+.socials{display:flex;flex-wrap:wrap;gap:8px}
+.socials a{padding:12px 18px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:14px;transition:background .3s,color .3s,border-color .3s}
+.socials a:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.map{border-radius:var(--r);overflow:hidden;min-height:460px;position:relative;border:1px solid var(--line);background:var(--ink-2)}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.9) sepia(.25) hue-rotate(-10deg)}
+.map .pin{position:absolute;left:16px;bottom:16px;padding:12px 16px;border-radius:14px;background:var(--accent);color:var(--ink);font-weight:800;font-size:14px}
+@media (max-width:900px){.cgrid{grid-template-columns:1fr}.map{min-height:360px}}
+.footer{padding:clamp(60px,8vw,120px) 0 30px}
+.footer__word{font-family:var(--display);font-weight:900;font-size:clamp(70px,21.5vw,380px);letter-spacing:-.07em;line-height:.8;white-space:nowrap;text-align:center;background:linear-gradient(180deg,var(--bone) 30%,rgba(244,239,231,.05));-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none}
+.footer__bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--muted);font-size:14px;font-weight:600;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+
+/* floating CTA (mobile) */
+.fab{position:fixed;right:16px;bottom:16px;z-index:45;display:none;box-shadow:0 14px 40px rgba(255,106,61,.35)}
+@media (max-width:900px){.fab{display:inline-flex}}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .manifesto p.big .w{opacity:1}
+}
+</style>
+</head>
+<body class="no-js">
+
+<div class="loader" aria-hidden="true">
+  <div class="loader__word"><span>П</span><span class="yo">Ё</span><span>С</span><span>Е</span><span>Л</span><span>Ь</span></div>
+  <div class="loader__count">0</div>
+  <div class="loader__bar"></div>
+</div>
+
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" data-link><span>П<span class="yo">ё</span>сель</span> <small>на Псковской</small></a>
+  <nav class="nav__links">
+    <a href="#services" data-link>Услуги</a>
+    <a href="#ritual" data-link>Как проходит</a>
+    <a href="#prices" data-link>Цены</a>
+    <a href="#masters" data-link>Мастера</a>
+    <a href="#contact" data-link>Контакты</a>
+  </nav>
+  <a class="btn btn--accent magnetic" href="https://wa.me/79961368684?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D0%B8%D1%81%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BD%D0%B0%20%D0%B3%D1%80%D1%83%D0%BC%D0%B8%D0%BD%D0%B3" target="_blank" rel="noopener">Записаться</a>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__shade"></div>
+    <div class="hero__badge">
+      <div class="g">2ГИС</div>
+      <div><b>4,7</b></div>
+      <div><span class="stars">★★★★★</span><small>20 оценок</small></div>
+    </div>
+    <div class="hero__content wrap">
+      <span class="eyebrow">Груминг-салон · Тверь, Псковская, 7</span>
+      <h1>
+        <span class="line"><span>Шерсть,</span></span>
+        <span class="line"><span>которой <em>завидуют</em></span></span>
+      </h1>
+      <div class="hero__row">
+        <div>
+          <p class="lead">Подари своему любимцу идеальный образ и море заботы. Собаки, кошки, кролики и морские свинки — с 10:00 по записи.</p>
+          <div class="hero__cta">
+            <a class="btn btn--accent magnetic" href="#prices" data-link>Посчитать стоимость
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn--ghost magnetic" href="https://t.me/peselnapskovskoy7" target="_blank" rel="noopener">Написать в Telegram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Шпицы</span><span>Йорки</span><span>Мальтипу</span><span>Пудели</span><span>Ши-тцу</span><span>Корги</span><span>Хаски</span><span>Чау-чау</span><span>Мейн-куны</span><span>Кролики</span><span>Морские свинки</span><span>Ньюфаундленды</span>
+      <span>Шпицы</span><span>Йорки</span><span>Мальтипу</span><span>Пудели</span><span>Ши-тцу</span><span>Корги</span><span>Хаски</span><span>Чау-чау</span><span>Мейн-куны</span><span>Кролики</span><span>Морские свинки</span><span>Ньюфаундленды</span>
+    </div>
+  </div>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="wrap">
+      <span class="eyebrow">Почему к нам возвращаются</span>
+      <p class="big" id="manifesto">Мы находим подход к каждому хвосту — даже к тем, кто <span class="hl">терпеть не может</span> стрижку когтей. Сертифицированные мастера, тёплая атмосфера, честные цены и <span class="hl">бантик</span> на прощание.</p>
+      <div class="facts">
+        <div class="fact"><b data-count="4.7" data-dec="1">0</b><span>средняя оценка в 2ГИС</span></div>
+        <div class="fact"><b data-count="30" data-suffix="+">0</b><span>пород и видов в прайсе</span></div>
+        <div class="fact"><b data-count="4">0</b><span>вида питомцев: собаки, кошки, кролики, свинки</span></div>
+        <div class="fact"><b>10:00</b><span>открываемся, работаем по записи</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Услуги</span><h2 class="h2">Всё для<br>идеального образа</h2></div>
+        <p class="lead">От экспресс-стрижки когтей до полного комплекса с VIP-косметикой. Цена зависит от породы, размера и состояния шерсти.</p>
+      </div>
+      <div class="bento">
+        <article class="card c-a reveal">
+          <span class="big-num">01</span>
+          <div>
+            <div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+            <h3>Полный комплекс<br>для собак</h3>
+            <p>Мытьё, сушка, стрижка и уход — питомец уходит чистым, пушистым и приятно пахнущим.</p>
+          </div>
+          <div class="price">от 2 300 ₽ <small>маленькие породы</small></div>
+        </article>
+        <article class="card c-b reveal">
+          <div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20c0-6 3-9 8-9s8 3 8 9M5 4l3 6M19 4l-3 6"/><circle cx="9.5" cy="15" r=".6"/><circle cx="14.5" cy="15" r=".6"/></svg></div>
+            <h3>Кошки</h3>
+            <p>Мытьё, вычёсывание, стрижка. Мейн-куны — отдельная любовь. VIP-косметика по желанию.</p>
+          </div>
+          <div class="price">от 2 000 ₽</div>
+        </article>
+        <article class="card c-c reveal">
+          <div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 18c2-6 5-9 9-9s7 3 9 9"/><path d="M8 9V5l2 2M16 9V5l-2 2"/></svg></div>
+            <h3>Средние и крупные</h3>
+            <p>Корги, хаски, чау-чау, шнауцеры, ньюфаундленды.</p>
+          </div>
+          <div class="price">от 2 300 ₽</div>
+        </article>
+        <article class="card c-d reveal">
+          <div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3c-1 3-1 6 0 8M15 3c1 3 1 6 0 8"/><ellipse cx="12" cy="16" rx="6" ry="5"/></svg></div>
+            <h3>Кролики и свинки</h3>
+            <p>Деликатный уход за самыми нежными клиентами.</p>
+          </div>
+          <div class="price">от 1 300 ₽</div>
+        </article>
+        <article class="card c-e reveal">
+          <div>
+            <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 3c-2 0-3 2-3 4 0 4 2 5 2 9 0 3 1 5 2 5s2-4 4-4 3 4 4 4 2-2 2-5c0-4 2-5 2-9 0-2-1-4-3-4s-3 1-5 1-3-1-5-1Z"/></svg></div>
+            <h3>Ультразвуковая чистка зубов</h3>
+            <p>Здоровая улыбка без наркоза и стресса.</p>
+          </div>
+          <div class="price">2 500 ₽</div>
+        </article>
+        <article class="card c-f reveal">
+          <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5Z"/></svg></div>
+          <div style="flex:1">
+            <h3>Блеск-тату, узоры на шерсти и мелочи</h3>
+            <p>Когти, уши, лапы, мордочка — можно отдельно, без полного комплекса.</p>
+          </div>
+          <div class="price" style="margin:0">от 100 ₽</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL -->
+  <section class="ritual" id="ritual">
+    <div class="ritual__inner">
+      <div class="ritual__track" id="track">
+        <div class="step step--intro">
+          <span class="eyebrow">Как проходит визит</span>
+          <h2 class="h2" style="margin-top:22px">Ритуал<br>в пять<br>шагов</h2>
+        </div>
+        <div class="step">
+          <svg class="art" viewBox="0 0 100 100"><circle cx="35" cy="40" r="18"/><circle cx="65" cy="40" r="18"/><path d="M20 80c8-12 52-12 60 0"/></svg>
+          <span class="step__n">01</span>
+          <div><h3>Знакомство</h3><p>Даём питомцу освоиться и обсуждаем с вами, какой образ хочется.</p></div>
+        </div>
+        <div class="step">
+          <svg class="art" viewBox="0 0 100 100"><path d="M50 10c14 22 22 34 22 46a22 22 0 0 1-44 0c0-12 8-24 22-46Z"/><path d="M40 60a10 10 0 0 0 10 10"/></svg>
+          <span class="step__n">02</span>
+          <div><h3>Мытьё</h3><p>Тёплая вода и косметика под тип шерсти. Для особых случаев — VIP-линейка.</p></div>
+        </div>
+        <div class="step">
+          <svg class="art" viewBox="0 0 100 100"><path d="M10 35h55a12 12 0 1 0-12-12"/><path d="M10 55h70a12 12 0 1 1-12 12"/><path d="M10 75h30"/></svg>
+          <span class="step__n">03</span>
+          <div><h3>Сушка</h3><p>Бережно, без перегрева — до лёгкости облака.</p></div>
+        </div>
+        <div class="step">
+          <svg class="art" viewBox="0 0 100 100"><circle cx="25" cy="28" r="12"/><circle cx="25" cy="72" r="12"/><path d="M35 34 88 80M35 66 88 20"/></svg>
+          <span class="step__n">04</span>
+          <div><h3>Стрижка</h3><p>Мастер учтёт пожелания и подскажет, какая стрижка подойдёт именно вашему питомцу.</p></div>
+        </div>
+        <div class="step step--last">
+          <svg class="art" viewBox="0 0 100 100"><path d="M50 50 15 28v44Z"/><path d="M50 50 85 28v44Z"/><circle cx="50" cy="50" r="7"/></svg>
+          <span class="step__n">05</span>
+          <div><h3>Бантик</h3><p>Финальный штрих. Питомец уходит красавцем, а вы — счастливыми.</p></div>
+        </div>
+      </div>
+      <div class="ritual__progress"><i id="rprog"></i></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="prices">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Прайс и калькулятор</span><h2 class="h2">Сколько стоит<br>красота?</h2></div>
+        <p class="lead">Выберите питомца и дополнительные процедуры — соберём предварительную стоимость и отправим заявку мастеру в один клик.</p>
+      </div>
+      <div class="calc">
+        <div>
+          <div class="tabs" role="tablist" id="tabs"></div>
+          <label class="search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="q" type="search" placeholder="Найти породу: шпиц, корги, мейн-кун…" autocomplete="off">
+          </label>
+          <div class="list" id="list"></div>
+          <div class="addons">
+            <h4>Добавить к визиту</h4>
+            <div class="chips" id="chips"></div>
+          </div>
+        </div>
+        <aside class="receipt" aria-live="polite">
+          <span class="eyebrow">Ваш визит</span>
+          <div class="receipt__pet" id="rPet">Выберите питомца</div>
+          <div class="receipt__cat" id="rCat">Слева — породы и услуги</div>
+          <div class="receipt__rows" id="rRows"></div>
+          <div class="receipt__total"><span>Итого</span><b id="rTotal">0 ₽</b></div>
+          <p class="receipt__note">Предварительно, не публичная оферта. Точную цену мастер назовёт после осмотра шерсти.</p>
+          <a class="btn btn--accent" id="rWa" href="https://wa.me/79961368684" target="_blank" rel="noopener">Записаться в WhatsApp</a>
+          <a class="btn btn--ghost" id="rTg" href="https://t.me/peselnapskovskoy7" target="_blank" rel="noopener">Или в Telegram</a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- MASTERS -->
+  <section class="masters" id="masters">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Команда</span><h2 class="h2">Руки, которым<br>доверяют</h2></div>
+        <p class="lead">К нашим мастерам ходят годами — и пишут про них отзывы по именам.</p>
+      </div>
+      <div class="mgrid">
+        <article class="master m1 reveal"><div class="master__pic"><b>О</b></div><div class="master__body"><h3>Ольга</h3><p>«Хожу к Ольге много лет — собака каждый раз выходит красавицей».</p></div></article>
+        <article class="master m2 reveal"><div class="master__pic"><b>С</b></div><div class="master__body"><h3>Светлана</h3><p>Стригла Люси — хозяйка вернулась во второй раз и снова довольна.</p></div></article>
+        <article class="master m3 reveal"><div class="master__pic"><b>Е</b></div><div class="master__body"><h3>Екатерина</h3><p>Аккуратный груминг и тот самый бантик после процедуры.</p></div></article>
+        <article class="master m4 reveal"><div class="master__pic"><b>И</b></div><div class="master__body"><h3>Ирина</h3><p>Внимательна к пожеланиям и подскажет, какая стрижка подойдёт питомцу.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews" id="reviews">
+    <div class="wrap sec-head" style="margin-bottom:30px">
+      <div><span class="eyebrow">Отзывы из 2ГИС</span><h2 class="h2">Говорят<br>хозяева</h2></div>
+      <a class="btn btn--ghost magnetic" href="https://2gis.ru/tver/firm/70000001063762843/tab/reviews" target="_blank" rel="noopener">Все отзывы в 2ГИС</a>
+    </div>
+    <div class="rrow" id="r1"></div>
+    <div class="rrow rev" id="r2"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="wrap faq__grid">
+      <div><span class="eyebrow">Вопросы</span><h2 class="h2" style="margin-top:22px">Перед<br>визитом</h2></div>
+      <div id="faq">
+        <div class="qa"><button aria-expanded="false">Нужна ли запись?<i></i></button><div class="qa__a"><div><p>Да, мы работаем по предварительной записи, открываемся в 10:00. Напишите в WhatsApp, Telegram или ВКонтакте — подберём удобное время.</p></div></div></div>
+        <div class="qa"><button aria-expanded="false">Почему в прайсе цены «от»?<i></i></button><div class="qa__a"><div><p>Итог зависит от размера питомца, длины и состояния шерсти (колтуны, линька). Мастер назовёт точную стоимость после осмотра.</p></div></div></div>
+        <div class="qa"><button aria-expanded="false">Мой питомец боится стрижки. Справитесь?<i></i></button><div class="qa__a"><div><p>Расскажите об этом при записи. Наши мастера находят подход даже к тем, кто не выносит стрижку когтей, — об этом пишут в отзывах.</p></div></div></div>
+        <div class="qa"><button aria-expanded="false">Кого вы стрижёте, кроме собак?<i></i></button><div class="qa__a"><div><p>Кошек (включая мейн-кунов), кроликов и морских свинок. Для них — отдельные комплексы и стрижка когтей.</p></div></div></div>
+        <div class="qa"><button aria-expanded="false">Можно только когти или уши?<i></i></button><div class="qa__a"><div><p>Конечно. Стрижка когтей, чистка ушей, бритьё лап и мордочки доступны отдельно — от 200 ₽.</p></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow">Запись и контакты</span>
+      <h2 style="margin-top:26px"><a href="https://wa.me/79961368684" target="_blank" rel="noopener" class="magnetic-text">Ждём<br>вашего <span class="yo">пёселя</span></a></h2>
+      <div class="cgrid">
+        <div class="cbox">
+          <dl>
+            <div><dt>Адрес</dt><dd>Тверь, Псковская ул., 7<br><span style="color:var(--muted);font-size:.7em">1 этаж · Московский район</span></dd></div>
+            <div><dt>Телефон</dt><dd><a href="tel:+79961368684">+7 996 136-86-84</a></dd></div>
+            <div><dt>Почта</dt><dd><a href="mailto:peselnapskovskoy@yandex.ru" style="font-size:.8em;word-break:break-all">peselnapskovskoy@yandex.ru</a></dd></div>
+            <div><dt>Режим</dt><dd>с 10:00, по записи</dd></div>
+          </dl>
+          <div class="socials">
+            <a href="https://wa.me/79961368684" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://t.me/peselnapskovskoy7" target="_blank" rel="noopener">Telegram</a>
+            <a href="https://t.me/peselnapskovskoy" target="_blank" rel="noopener">Канал</a>
+            <a href="https://vk.com/peselnapskovskoy" target="_blank" rel="noopener">ВКонтакте</a>
+            <a href="https://2gis.ru/tver/firm/70000001063762843" target="_blank" rel="noopener">2ГИС</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Карта: Тверь, Псковская 7" loading="lazy" src="https://yandex.ru/map-widget/v1/?text=%D0%A2%D0%B2%D0%B5%D1%80%D1%8C%2C%20%D0%9F%D1%81%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%207&amp;z=16"></iframe>
+          <span class="pin">📍 Псковская, 7 — 1 этаж</span>
+        </div>
+      </div>
+    </div>
+    <footer class="footer wrap">
+      <div class="footer__word" aria-hidden="true">ПЁСЕЛЬ</div>
+      <div class="footer__bar"><span>© Пёсель на Псковской, Тверь</span><span>Цены на сайте не являются публичной офертой</span></div>
+    </footer>
+  </section>
+</main>
+
+<a class="btn btn--accent fab" href="https://wa.me/79961368684" target="_blank" rel="noopener">Записаться</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+document.body.classList.remove('no-js');
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+scrollTo(0,0);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+const hasGsap = !!window.gsap;
+const fmt = n => n.toLocaleString('ru-RU').replace(/ /g,' ') + ' ₽';
+
+/* ================= HOVER FX ================= */
+if(fine && !reduce){
+  // magnetic
+  document.querySelectorAll('.magnetic').forEach(el=>{
+    el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;el.style.transform=`translate(${x*.25}px,${y*.35}px)`;});
+    el.addEventListener('pointerleave',()=>{el.style.transition='transform .6s cubic-bezier(.16,1,.3,1)';el.style.transform='';setTimeout(()=>el.style.transition='',600);});
+  });
+  // card spotlight
+  document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');}));
+}
+
+/* ================= NAV hide on scroll ================= */
+const nav=document.getElementById('nav');let lastY=0;
+addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('is-hidden',y>lastY&&y>400);lastY=y;},{passive:true});
+
+/* ================= FAQ ================= */
+document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.parentElement,open=!qa.classList.contains('open');
+  document.querySelectorAll('.qa').forEach(q=>{q.classList.remove('open');q.querySelector('button').setAttribute('aria-expanded','false');});
+  if(open){qa.classList.add('open');b.setAttribute('aria-expanded','true');}
+}));
+
+/* ================= REVIEWS ================= */
+const REVIEWS=[
+ ['Анастасия М.','Удобное расположение, красивый дизайн, чистота, сертифицированные мастера и приятные цены.'],
+ ['Ольга Д.','Были второй раз — огромное спасибо Светлане за стрижку Люси!'],
+ ['Дина М.','Собака терпеть не может стрижку когтей, но здесь нашли подход и всё сделали быстро.'],
+ ['Лада Р.','Первый раз стригла Ольга, второй — Екатерина. Обе молодцы, а бантик после процедуры — приятная мелочь.'],
+ ['Ирина Ж.','Мастер Ирина внимательно выслушала пожелания и подсказала, какая стрижка подойдёт.'],
+ ['Елена Р.','Хожу к Ольге много лет. Стрижка отличная, собака выходит красавицей.'],
+ ['Екатерина Е.','Ездим к одному мастеру — собака с ней подружилась. После визита чистая и приятно пахнет.'],
+ ['Тамара Б.','Профессиональные мастера, внимание к клиентам и человеческий подход всех сотрудников.'],
+ ['Полина Р.','Лучший салон для животных! Спасибо мастерам за качественную работу.'],
+ ['Ирина S.','Любимый салон.'],
+ ['Наталья В.','Всё понравилось: собака довольна, хозяева счастливы.']
+];
+const card=([n,t])=>`<figure class="review"><div><div class="st">★★★★★</div><q style="display:block;margin-top:14px">${t}</q></div><footer><i>${n[0]}</i>${n} · 2ГИС</footer></figure>`;
+const half=Math.ceil(REVIEWS.length/2);
+const r1=REVIEWS.slice(0,half).map(card).join(''), r2=REVIEWS.slice(half).map(card).join('');
+document.getElementById('r1').innerHTML=r1+r1;
+document.getElementById('r2').innerHTML=r2+r2;
+
+/* ================= PRICE CALCULATOR ================= */
+const CATS=[
+ {id:'small',name:'Малые породы',items:[['Бивер-йорк',2400],['Йорк до 23 см',2400],['Йорк до 29 см',2500],['Йорк до 38 см',2600],['Китайская хохлатая',2600],['Мальтипу',2800],['Мопс',2400],['Мопс — мытьё с сушкой',2000,true],['Папильон',2400],['Пудель той до 28 см',2800],['Чихуахуа',2300],['Ши-тцу до 25 см',2600],['Шпиц до 23 см',2500],['Шпиц до 29 см',2600],['Шпиц до 38 см',2900]]},
+ {id:'big',name:'Средние и крупные',items:[['Цвергпинчер',2300],['Французский бульдог',2400],['Вельш-корги',2700],['Английский бульдог',2800],['Вест-хайленд-уайт-терьер',2900],['Силихем-терьер',2900],['Скотч-терьер',2900],['Цвергшнауцер',2900],['Бассет-хаунд',3100],['Миттельшнауцер',4400],['Чау-чау',4600],['Хаски',5000],['Кеесхонд (вольфшпиц)',5000],['Восточноевропейская овчарка',6000],['Ньюфаундленд',8000]]},
+ {id:'cats',name:'Кошки',items:[['Мытьё кошки',2000],['Комплекс без мытья',2200,true],['Комплекс с мытьём',2600,true],['Комплекс с VIP-косметикой',3000,true],['Мейн-кун: мытьё с сушкой',2200,true],['Мейн-кун: без мытья',2400,true],['Мейн-кун: с мытьём',2800,true],['Мейн-кун: VIP-косметика',3200,true]]},
+ {id:'exotic',name:'Кролики и свинки',items:[['Морская свинка',1300],['Кролик',2200]]}
+];
+const ADDONS=[['Стрижка когтей',300,600],['Чистка ушей',200,500],['Бритьё лап',200,600],['Бритьё ушей',200,400],['Бритьё морды',300,500],['Узор на шерсти',300],['Блеск-тату',100],['Чистка зубов ультразвуком',2500,2500]];
+const st={cat:'small',pet:null,add:new Set(),q:''};
+const $tabs=document.getElementById('tabs'),$list=document.getElementById('list'),$chips=document.getElementById('chips'),$q=document.getElementById('q');
+$tabs.innerHTML=CATS.map(c=>`<button class="tab" role="tab" data-c="${c.id}">${c.name}</button>`).join('');
+$chips.innerHTML=ADDONS.map((a,i)=>`<button class="chip" data-i="${i}" aria-pressed="false">${a[0]} <em>${a[2]&&a[2]!==a[1]?a[1]+'–'+a[2]:(a[2]===a[1]?a[1]:'от '+a[1])} ₽</em></button>`).join('');
+function renderList(){
+  $tabs.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.c===st.cat&&!st.q));
+  let items=[];
+  if(st.q){CATS.forEach(c=>c.items.forEach(it=>{if(it[0].toLowerCase().includes(st.q))items.push([c,it]);}));}
+  else{const c=CATS.find(c=>c.id===st.cat);items=c.items.map(it=>[c,it]);}
+  $list.innerHTML=items.length?items.map(([c,it])=>{
+    const key=c.id+'|'+it[0];
+    return `<button class="opt" data-k="${key}" aria-pressed="${st.pet&&st.pet.key===key}"><span>${it[0]}</span><span>${it[2]?'':'от '}${fmt(it[1])}</span></button>`;
+  }).join(''):`<div class="empty">Такой породы нет в прайсе — напишите нам, посчитаем индивидуально.</div>`;
+}
+function renderReceipt(){
+  const rows=[];let total=0;
+  if(st.pet){total+=st.pet.price;rows.push([st.pet.name,(st.pet.exact?'':'от ')+fmt(st.pet.price)]);}
+  st.add.forEach(i=>{const a=ADDONS[i];total+=a[1];rows.push([a[0],(a[2]===a[1]?'':'от ')+fmt(a[1])]);});
+  document.getElementById('rPet').textContent=st.pet?st.pet.name:(st.add.size?'Отдельные процедуры':'Выберите питомца');
+  document.getElementById('rCat').textContent=st.pet?st.pet.cat:'Слева — породы и услуги';
+  document.getElementById('rRows').innerHTML=rows.map(r=>`<div><span>${r[0]}</span><span>${r[1]}</span></div>`).join('');
+  const $t=document.getElementById('rTotal');
+  const prev=+($t.dataset.v||0);$t.dataset.v=total;
+  const show=v=>{$t.textContent=(rows.length>1||(st.pet&&!st.pet.exact)?'от ':'')+fmt(Math.round(v));};
+  if(hasGsap&&!reduce){const o={v:prev};gsap.to(o,{v:total,duration:.6,ease:'power3.out',onUpdate:()=>show(o.v)});gsap.fromTo($t,{scale:1.12},{scale:1,duration:.5,ease:'back.out(3)'});}else show(total);
+  const msg='Здравствуйте! Хочу записаться на груминг.\n'+(rows.length?rows.map(r=>'• '+r[0]+' — '+r[1]).join('\n')+'\nПредварительно: от '+fmt(total):'');
+  document.getElementById('rWa').href='https://wa.me/79961368684?text='+encodeURIComponent(msg);
+}
+$tabs.addEventListener('click',e=>{const t=e.target.closest('.tab');if(!t)return;st.cat=t.dataset.c;st.q='';$q.value='';renderList();});
+$list.addEventListener('click',e=>{const o=e.target.closest('.opt');if(!o)return;
+  const [cid,name]=o.dataset.k.split('|');const c=CATS.find(c=>c.id===cid);const it=c.items.find(i=>i[0]===name);
+  st.pet=(st.pet&&st.pet.key===o.dataset.k)?null:{key:o.dataset.k,name,price:it[1],exact:!!it[2],cat:c.name};
+  renderList();renderReceipt();});
+$chips.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const i=+c.dataset.i;st.add.has(i)?st.add.delete(i):st.add.add(i);c.setAttribute('aria-pressed',st.add.has(i));renderReceipt();});
+$q.addEventListener('input',()=>{st.q=$q.value.trim().toLowerCase();renderList();});
+renderList();renderReceipt();
+
+/* ================= SMOOTH SCROLL + GSAP ================= */
+let lenis=null;
+if(window.Lenis&&!reduce){
+  lenis=new Lenis({lerp:.09,smoothWheel:true});
+  if(hasGsap){lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);}
+  else{(function raf(t){lenis.raf(t);requestAnimationFrame(raf);})();}
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const id=a.getAttribute('href');const el=id==='#top'?document.body:document.querySelector(id);if(!el)return;
+  e.preventDefault();lenis?lenis.scrollTo(el,{offset:id==='#top'?0:-20,duration:1.6}):el.scrollIntoView({behavior:'smooth'});
+}));
+
+const loader=document.querySelector('.loader');
+if(!hasGsap||reduce){loader.remove();return;}
+gsap.registerPlugin(ScrollTrigger);
+
+// preloader
+const cnt=loader.querySelector('.loader__count'),o={v:0};
+const tl=gsap.timeline();
+tl.to('.loader__word span',{y:0,duration:.9,ease:'expo.out',stagger:.06})
+  .to(o,{v:100,duration:1.2,ease:'power2.inOut',onUpdate:()=>cnt.textContent=Math.round(o.v)},0)
+  .to('.loader__bar',{width:'100%',duration:1.2,ease:'power2.inOut'},0)
+  .to('.loader__word span',{y:'-110%',duration:.6,ease:'expo.in',stagger:.03},'+=.1')
+  .to(loader,{clipPath:'inset(0 0 100% 0)',duration:.9,ease:'expo.inOut'},'-=.2')
+  .set(loader,{display:'none'})
+  .from('.hero h1 .line>span',{yPercent:110,duration:1.2,ease:'expo.out',stagger:.1},'-=.55')
+  .from('.hero .eyebrow, .hero .lead, .hero__cta .btn, .hero__badge',{y:30,opacity:0,duration:1,ease:'expo.out',stagger:.07},'-=1')
+  .from('#nav',{opacity:0,duration:1,ease:'power2.out'},'-=1');
+
+// hero parallax
+gsap.to('.hero__content',{yPercent:-25,opacity:.2,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+// manifesto word reveal
+const man=document.getElementById('manifesto');
+(function split(node){
+  [...node.childNodes].forEach(n=>{
+    if(n.nodeType===3){const frag=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(w=>{if(!w)return;if(/^\s+$/.test(w)){frag.append(w);return;}const s=document.createElement('span');s.className='w';s.textContent=w;frag.append(s);});n.replaceWith(frag);}
+    else if(n.nodeType===1)split(n);
+  });
+})(man);
+gsap.to(man.querySelectorAll('.w'),{opacity:1,stagger:.08,ease:'none',scrollTrigger:{trigger:man,start:'top 80%',end:'bottom 45%',scrub:true}});
+
+// counters
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const to=+el.dataset.count,dec=+(el.dataset.dec||0),suf=el.dataset.suffix||'',c={v:0};
+  ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>gsap.to(c,{v:to,duration:1.8,ease:'expo.out',onUpdate:()=>el.textContent=c.v.toFixed(dec).replace('.',',')+suf})});
+});
+
+// reveals
+gsap.utils.toArray('.reveal').forEach((el,i)=>{
+  gsap.from(el,{y:80,opacity:0,rotate:i%2?1.5:-1.5,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 92%'}});
+});
+gsap.utils.toArray('.h2').forEach(h=>gsap.from(h,{y:60,opacity:0,duration:1.2,ease:'expo.out',scrollTrigger:{trigger:h,start:'top 90%'}}));
+gsap.from('.footer__word',{yPercent:60,opacity:0,ease:'none',scrollTrigger:{trigger:'.footer',start:'top bottom',end:'bottom bottom',scrub:true}});
+
+// horizontal ritual
+const mm=gsap.matchMedia();
+mm.add('(min-width:768px)',()=>{
+  const track=document.getElementById('track');
+  const dist=()=>track.scrollWidth-innerWidth;
+  gsap.to(track,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'.ritual',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,
+    onUpdate:s=>gsap.set('#rprog',{scaleX:s.progress})}});
+});
+addEventListener('load',()=>ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
